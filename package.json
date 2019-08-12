@@ -1,0 +1,19 @@
+{
+  "name": "doc-uploader-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "dev": "nodemon server/App.js && npm start client/App.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimhardy/doc-uploader-poc.git"
+  },
+  "author": "Jim Hardy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jimhardy/doc-uploader-poc/issues"
+  },
+  "homepage": "https://github.com/jimhardy/doc-uploader-poc#readme"
+}
