@@ -3,40 +3,43 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImages } from '@fortawesome/free-solid-svg-icons';
 
 class Uploader extends Component {
-    state = { data: [] }
+    state = { 
+        files: null,
+         }
 
     handleChange = (e) => {
-        console.log(e);
-        this.setState = {
-            data: e
-        }
+       if(e.target.files[0]) {
+           const files  = e.target.files[0] ;
+           console.log(e.target.files[0]);
+           this.setState(() => ({files}));
+       }
     }
 
-    handleUpload = (data) => {
-        data.preventDefault();
-        // const files = Array.from(data.target.files);
-        console.log(data);
-        // const formData = new FormData();
-        // for (const file of data.files) {
-        //     formData.append('myFiles' , file);
-        // }
+    handleUpload = (e) => {
+        e.preventDefault();
+        const files = Array.from(this.state.files);
+        console.log(files);
+        const formData = new FormData();
+        for (const file of files) {
+            formData.append('myFiles' , file);
+        }
 
-        // fetch('https://localhost:3000/upload' , {
-        //     method: 'post',
-        //     body: formData
-        // } ).catch(err => {
-        //     console.error(err);
-        // });
+        fetch('https://localhost:8000/upload' , {
+            method: 'post',
+            body: formData
+        } ).catch(err => {
+            console.error(err);
+        });
     }
     render() { 
         return ( 
             <div>
-                <form>
+                <form >
 
                 <label htmlFor="multi">
                 <FontAwesomeIcon icon={faImages} color="#6d84b4" size="10x" />
                 </label>
-                <input type="file" id="multi" multiple onChange={this.handleChange}/>
+                <input name="files" value="" type="file" id="multi" multiple onChange={this.handleChange}/>
                 <button onClick={this.handleUpload}>Submit</button>
                 </form>
             </div>

@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/jimhardy/doc-uploader-poc/issues"
   },
-  "homepage": "https://github.com/jimhardy/doc-uploader-poc#readme"
+  "homepage": "https://github.com/jimhardy/doc-uploader-poc#readme",
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-plugin-react": "^7.14.3"
+  }
 }
